@@ -1,0 +1,47 @@
+{
+  "name": "inventory-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "chart.js": "^4.4.7",
+    "eslint-config-react-app": "^7.0.1",
+    "jspdf": "^3.0.0",
+    "lucide-react": "^0.477.0",
+    "react": "^19.0.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^19.0.0",
+    "react-phone-number-input": "^3.4.12",
+    "react-router-dom": "^7.0.2",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.15.1",
+    "sonner": "^2.0.1",
+    "web-vitals": "^4.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
