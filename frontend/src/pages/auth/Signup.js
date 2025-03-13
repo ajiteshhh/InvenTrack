@@ -4,6 +4,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import {toast} from "sonner";
 import Error from "../../components/Error";
+import {BASE_URL} from "../../context/Api";
 
 const SignUp = () => {
   const navigate = useNavigate();
