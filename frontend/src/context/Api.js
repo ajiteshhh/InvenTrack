@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = 'https://inventrack-api.onrender.com';
 const DEFAULT_HEADERS = { 'Content-Type': 'application/json' };
 const REQUEST_OPTIONS = { credentials: 'include' };
 

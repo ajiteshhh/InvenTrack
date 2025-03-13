@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {toast} from "sonner";
 import  Error from "../../components/Error";
+import {BASE_URL} from "../../context/Api";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const ForgotPassword = () => {
     }
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:3001/auth/send-otp", {
+      const response = await fetch(`${BASE_URL}/auth/send-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

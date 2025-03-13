@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+
+if(process.env.NODE_ENV === 'production') {
+    disableReactDevTools();
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

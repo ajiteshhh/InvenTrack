@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import {toast} from "sonner";
-
+import { BASE_URL } from "./Api";
 
 const AuthContext = createContext();
 
@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const response = await fetch('http://localhost:3001/auth/check', {
+                const response = await fetch(`${BASE_URL}/auth/check`, {
                     method: 'GET',
                     credentials: 'include',
                 });
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     };
     const logout = async () => {
         try {
-            const response = await fetch('http://localhost:3001/auth/signout', {
+            const response = await fetch(`${BASE_URL}/auth/signout`, {
                 method: 'POST',
                 credentials: 'include'
             });

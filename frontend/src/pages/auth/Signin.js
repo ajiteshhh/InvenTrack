@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Error from "../../components/Error";
 import {toast} from "sonner";
+import {BASE_URL} from "../../context/Api";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const SignIn = () => {
 
   const sendOtp = async (type) => {
     try {
-      const response = await fetch("http://localhost:3001/auth/send-otp", {
+      const response = await fetch(`${BASE_URL}/auth/send-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: 'include',
@@ -57,7 +58,7 @@ const SignIn = () => {
     }
     if (formData.email !== "" && formData.password !== "") {
       try {
-        const response = await fetch('http://localhost:3001/auth/signin', {
+        const response = await fetch(`${BASE_URL}/auth/signin`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',

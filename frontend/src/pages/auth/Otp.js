@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useNavigate, useLocation, useSearchParams} from 'react-router-dom';
 import {useAuth} from "../../context/AuthContext";
 import Error from "../../components/Error";
+import {BASE_URL} from "../../context/Api";
 
 const Otp = () => {
     const [searchParams] = useSearchParams();
@@ -38,7 +39,7 @@ const Otp = () => {
         }
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:3001/auth/verify-otp', {
+            const response = await fetch(`${BASE_URL}/auth/verify-otp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,7 +51,7 @@ const Otp = () => {
             if (response.ok) {
                 if(type === 'Signin') {
                     setLoading(false);
-                    const updatedResponse = await fetch('http://localhost:3001/auth/user', {
+                    const updatedResponse = await fetch(`${BASE_URL}/auth/user`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ const Otp = () => {
                     navigate('/signin');
                     return;
                 } else if(type === 'forgot-password') {
-                    const updateResponse = await fetch("http://localhost:3001/auth/update/user/password", {
+                    const updateResponse = await fetch(`${BASE_URL}/auth/update/user/password`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ email, password, type }),
