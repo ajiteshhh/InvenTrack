@@ -10,10 +10,10 @@ const handleGenerateToken = async (req, res, db, jwt, jwtSecret) => {
         return res.status(404).json({ message: 'User not found.' });
     }
     const token = createCookie(user, res, jwt, jwtSecret);
-    res.cookie('jwt', token, {
+    res.cookie("jwt", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        secure: true,
+        sameSite: "None",
     });
     return res.status(200).json({
         message: 'Login successful',
@@ -124,10 +124,10 @@ const handleSignIn = async (req, res, db, bcrypt, jwt, jwtSecret) => {
             }
             if(!user.tfa_enabled) {
                 const token = createCookie(user, res, jwt, jwtSecret);
-                res.cookie('jwt', token, {
+                res.cookie("jwt", token, {
                     httpOnly: true,
-                    secure: process.env.NODE_ENV === 'production', // Enforce secure cookies in production
-                    sameSite: 'strict', // CSRF protection
+                    secure: true,
+                    sameSite: "None",
                 });
                 return res.status(200).json({
                     message: 'Login successful',
@@ -252,7 +252,7 @@ const handleVerifyOtp = async (req, res, db, speakeasy, jwt, jwtSecret) => {
             return res.status(400).json({ message: 'Invalid OTP. Please try again.' });
         }
     } catch (error) {
-        console.error('Error verifying OTP:', error);
+        console.error('Error verifying OTP:', error.message);
         return res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 };
@@ -330,10 +330,10 @@ const handleUpdateUser = async (req, res, db, jwt, jwtSecret) => {
             .where({ id: user_id })
             .first();
         const token = createCookie(updatedUser, res, jwt, jwtSecret);
-        res.cookie('jwt', token, {
+        res.cookie("jwt", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            secure: true,
+            sameSite: "None",
         });
         return res.status(200).json({ message: "Updated User Successfully", user: {
                 id: updatedUser.id,
@@ -385,10 +385,10 @@ const handleUpdateProfilePicture = async (req, res, db, jwt, jwtSecret) => {
         const [updatedUser] = await db("users").where({ id: user_id }).update({ profile_picture: result.secure_url }).returning('*');
 
         const token = createCookie(updatedUser, res, jwt, jwtSecret);
-        res.cookie('jwt', token, {
+        res.cookie("jwt", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            secure: true,
+            sameSite: "None",
         });
         return res.status(200).json({ message: "Updated User Successfully", user: {
                 id: updatedUser.id,
@@ -437,10 +437,10 @@ const handleUpdateBusinessLogo = async (req, res, db, jwt, jwtSecret) => {
         const [updatedUser] = await db("users").where({ id: user_id }).update({ business_logo: result.secure_url }).returning('*');
 
         const token = createCookie(updatedUser, res, jwt, jwtSecret);
-        res.cookie('jwt', token, {
+        res.cookie("jwt", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            secure: true,
+            sameSite: "None",
         });
         return res.status(200).json({ message: "Updated User Successfully", user: {
                 id: updatedUser.id,
