@@ -14,6 +14,7 @@ const handleGenerateToken = async (req, res, db, jwt, jwtSecret) => {
         httpOnly: true,
         secure: true,
         sameSite: "None",
+        partitioned: true,
     });
     return res.status(200).json({
         message: 'Login successful',
@@ -128,6 +129,7 @@ const handleSignIn = async (req, res, db, bcrypt, jwt, jwtSecret) => {
                     httpOnly: true,
                     secure: true,
                     sameSite: "None",
+                    partitioned: true,
                 });
                 return res.status(200).json({
                     message: 'Login successful',
@@ -334,6 +336,7 @@ const handleUpdateUser = async (req, res, db, jwt, jwtSecret) => {
             httpOnly: true,
             secure: true,
             sameSite: "None",
+            partitioned: true,
         });
         return res.status(200).json({ message: "Updated User Successfully", user: {
                 id: updatedUser.id,
@@ -389,6 +392,7 @@ const handleUpdateProfilePicture = async (req, res, db, jwt, jwtSecret) => {
             httpOnly: true,
             secure: true,
             sameSite: "None",
+            partitioned: true,
         });
         return res.status(200).json({ message: "Updated User Successfully", user: {
                 id: updatedUser.id,
@@ -441,6 +445,7 @@ const handleUpdateBusinessLogo = async (req, res, db, jwt, jwtSecret) => {
             httpOnly: true,
             secure: true,
             sameSite: "None",
+            partitioned: true,
         });
         return res.status(200).json({ message: "Updated User Successfully", user: {
                 id: updatedUser.id,
