@@ -36,10 +36,6 @@ const handleAddSupplier = async (req, res, db) => {
 
 /**
  * Retrieves all suppliers for the authenticated user with additional order statistics
- * @param {Object} req - Express request object with user info in req.user
- * @param {Object} res - Express response object
- * @param {Object} db - Database connection object
- * @returns {Object} JSON response with array of suppliers and their order data
  */
 const handleGetAllSuppliers = async (req, res, db) => {
     // Optional chaining to safely extract user ID
@@ -84,15 +80,8 @@ const handleGetAllSuppliers = async (req, res, db) => {
                 db.raw('COUNT(o.order_id) OVER (PARTITION BY o.supplier_id) AS total_orders') // Total orders
             );
 
-        // Return empty array instead of 404 if no suppliers found
-        if (suppliers.length === 0) {
-            return res.status(404).json([]/*{ message: 'No suppliers found' }*/);
-        }
-
-        // Return suppliers with their order data
-        res.status(200).json(suppliers);
+        res.status(200).json(suppliers || []);
     } catch (err) {
-        // Return error response
         res.status(500).json({
             message: 'Error retrieving suppliers with latest orders',
             error: err.message

@@ -105,7 +105,7 @@ export const deleteSupplier = async (id) => {
 // ------------------- Category -------------------
 
 export const fetchCategories = async () => {
-  const response = await fetch('http://localhost:3001/category', {
+  const response = await fetch(`${BASE_URL}/category`, {
     method: 'GET',
     headers: DEFAULT_HEADERS,
     ...REQUEST_OPTIONS,
