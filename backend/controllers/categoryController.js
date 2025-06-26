@@ -76,9 +76,7 @@ const handleGetAllCategories = async (req, res, db) => {
             .where({ user_id })
             .select('*');
         res.status(200).json(categories);
-        console.log(categories);
     } catch (err) {
-        console.log(err);
         res.status(500).json({ message: 'Error retrieving categories', error: err.message });
     }
 };

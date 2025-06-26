@@ -49,6 +49,7 @@ export const DataProvider = ({ children }) => {
           fetchOrders(),
           fetchRecentActivity(),
         ]);
+        console.log(categoriesData);
         setSuppliers(suppliersData || []);
         setCategories(categoriesData || []);
         setProducts(productsData || []);
