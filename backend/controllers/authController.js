@@ -313,10 +313,6 @@ const handleUpdateUser = async (req, res, db, jwt, jwtSecret) => {
         return res.status(401).json({ message: "Unauthorized. User ID not found." });
     }
 
-    if ((!name || !phone_number || !business_name || !business_address)) {
-        return res.status(400).json({ message: "Name and phone number are required." });
-    }
-
     try {
         await db("users").where({ id: user_id }).update({
             name,
